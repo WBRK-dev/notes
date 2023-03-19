@@ -11,7 +11,8 @@
   "author": "WBR_K",
   "license": "ISC",
   "dependencies": {
-    "electron": "^23.1.4"
+    "electron": "^23.1.4",
+    "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.5"
