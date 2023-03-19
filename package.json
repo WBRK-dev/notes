@@ -1,0 +1,19 @@
+{
+  "name": "notes",
+  "version": "1.0",
+  "description": "Electron powered notes app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "make": "electron-forge make"
+  },
+  "author": "WBR_K",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^23.1.4"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.5"
+  }
+}
