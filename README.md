@@ -9,4 +9,5 @@ By using WBRK's Apps 1 terabyte of storage I can store the notes on the cloud fo
 ## Availability
 Windows: Planned
 <br>Linux: Planned
+<br>Android: Planned
 <br>MacOS: Not Planned
