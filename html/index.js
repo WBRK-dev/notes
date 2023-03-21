@@ -55,21 +55,24 @@ async function synchronize() {
     if (!(userdata.offline)) {
         $("header #indicator").attr('data-job', 'syncing');
         storedNotes = JSON.parse(localStorage.getItem('notes'));
-        await $.each(storedSyncJobs, async function(key, value) {
-            getRequestJson = {"username": userdata.username, "action": value.action, "note": {"title": value.title, "content": ""}};
-            $.each(storedNotes, function(key2,value2) {
-                if (value2.title === value.title) {
-                    getRequestJson.note.content = value2.content;
-                }
-            });
-            console.log(getRequestJson);
-            await storeOnCloud(getRequestJson);
-            sleepFor(500);
-        });
-        setTimeout(() => {
-            localStorage.setItem('syncjobs', '[]');
-            syncHandler();
-        }, 200);
+        console.log(storedNotes, storedSyncJobs);
+        await $.get("http://wbrk.ddns.net/res/notes/php/getJson.php?username="+userdata.username, function (data) {
+            let existingNotes = JSON.parse(data);
+            for (let i = 0; i < storedSyncJobs.length; i++) {
+                getRequestJson = {"username": userdata.username, "action": storedSyncJobs[i].action, "note": {"title": storedSyncJobs[i].title, "content": ""}};
+                $.each(storedNotes, function(key2,value2) {
+                    if (value2.title === storedSyncJobs[i].title) {
+                        getRequestJson.note.content = value2.content;
+                    }
+                });
+                existingNotes = createCloudJson(getRequestJson, existingNotes);
+            }
+            console.log(existingNotes);
+            $.get('http://wbrk.ddns.net/res/notes/php/saveJson2.php?username=' + userdata.username + '&json=' + JSON.stringify(existingNotes), function () { }).fail(() => {window.open('./userCheck/userCheck.html', '_self');});
+        }).fail(() => {window.open('./userCheck/userCheck.html', '_self');});
+
+        localStorage.setItem('syncjobs', '[]');
+        syncHandler();
     } else {
         $("header #indicator").attr('data-job', '');
     };
