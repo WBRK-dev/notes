@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="./assets/js/jquery.js"></script>
+    <title>Notes</title>
+</head>
+<body>
+    <header><p class="title">Notes</p><div id="indicator" data-job=""></div><p id="sync-jobs">Sync jobs: <span id="job-number">0</span></p><div class="right">
+        <a href="./userCheck/userCheck.html" id="enablesync" style="display: none;"><img src="./assets/img/sync.svg">Enable Sync</a>
+        <div class="img-button" id="sync"><img src="./assets/img/sync.svg"><p style="display: none;">Sync</p></div>
+        <div class="img-button" id="add" onclick="popups(0, 'addNote')"><img src="./assets/img/add.svg"></div>
+        <div class="img-button" id="settings"><img src="./assets/img/cog.svg"></div>
+    </div></header>
+    <main>
+        <div class="search"><input type="text" placeholder="Search..."></div>
+        <notes>
+        </notes>
+    </main>
+    <popups style="display: none;">
+        <popup class="dialog" id="addNote">
+            <p class="title">New Note</p>
+            <input type="text" id="title" placeholder="Title">
+            <div class="buttonbox"><button class="sec" id="hidePopup">Cancel</button><button class="prim" id="submit">Save</button></div>
+        </popup>
+    </popups>
+</body>
+<script src="./assets/js/cloudHandler.js" defer></script>
+<script src="index.js" defer></script>
+<script src="./assets/js/popups.js" defer></script>
+</html>

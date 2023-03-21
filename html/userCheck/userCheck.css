@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    color: var(--font);
+}
+
+img, a, button, notepreview {
+    display: block;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: sans-serif;
+
+    --bg: #1b1b1b;
+    --border: #858585;
+    --hover: #313131;
+    --font: #fff;
+}
+
+
+
+header {
+    height: 50px;
+    border-bottom: 1px solid var(--border);
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+
+
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+main .spinner {
+    border: 2px solid transparent;
+    border-top: 2px solid blue;
+    border-radius: 50px;
+    height: 10px;
+    aspect-ratio: 1;
+
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+}

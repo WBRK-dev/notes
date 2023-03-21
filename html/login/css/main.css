@@ -1,0 +1,84 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+main > .form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+main > .form .flex {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+main > .form .spinner {
+    border: 1px solid transparent;
+    border-top: 1px solid blue;
+    border-radius: 20px;
+    height: 10px;
+    aspect-ratio: 1;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+}
+
+
+
+
+
+
+/* Modules */
+input {
+    color: var(--font);
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 16px;
+    
+    outline: none;
+}
+
+input:focus-visible {
+    outline: 1px solid blue;
+}
+
+button {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 4px 0;
+    font-size: 16px;
+
+    cursor: pointer;
+    outline: none;
+    transition: background-color 250ms;
+}
+
+button:hover {
+    background-color: var(--hover);
+}
+
+button:focus-visible {
+    outline: 1px solid blue;
+    background-color: var(--hover);
+}
+
+a {
+    color: #b1b1b1;
+    outline: none;
+    border-radius: 5px;
+}
+
+a:focus-visible {
+    outline: 1px solid blue;
+}

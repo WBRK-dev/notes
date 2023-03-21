@@ -1,0 +1,130 @@
+header {
+    height: 50px;
+    border-bottom: 1px solid var(--border);
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+header .right {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+header .img-button {
+    height: 40px;
+    aspect-ratio: 1;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .img-button img {
+    height: 35px;
+}
+
+header .img-button:hover {
+    background-color: #8080806c;
+}
+
+
+
+
+
+
+
+
+header #indicator {
+    height: 10px;
+    aspect-ratio: 1;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    transition: border 250ms, background-color 250ms;
+}
+
+header #indicator[data-job="done"] {
+    border: 1px solid green;
+    background-color: green;
+}
+
+header #indicator[data-job="syncing"] {
+    animation: syncing-indicator 1s linear infinite;
+    border: 1px solid transparent;
+    border-top: 1px solid blue;
+}
+
+@keyframes syncing-indicator {
+    0%{rotate: 0deg;}
+    100%{rotate: 360deg;}
+}
+
+header:has(#indicator[data-job="done"]) #sync-jobs {
+    display: none;
+}
+
+
+
+
+/* Right */
+
+a#enablesync {
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 10px 3px 6px;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    transition: background-color 250ms;
+}
+
+a#enablesync:hover {
+    background-color: rgb(0, 0, 204);
+}
+
+a#enablesync img {
+    height: 30px;
+}
+
+
+
+header .sync-button {
+    transition: background-color 250ms;
+    background-color: blue;
+    gap: 5px;
+    justify-content: flex-start;
+    padding: 0 10px 0 7px;
+    aspect-ratio: unset;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    animation: syncbutton 500ms forwards;
+}
+
+@keyframes syncbutton {
+    0%{width: 40px;}
+    100%{width: 92px;}
+}
+
+header .sync-button:hover {
+    background-color: rgb(0, 0, 211);
+}
+
+header .sync-button p {
+    display: block !important;
+}
