@@ -24,11 +24,15 @@ function removeNote(title) {
     
 }
 
+function openNote(title) {
+    window.open("editnote/index.html#"+title, "_self");
+}
+
 function renderNotes() {
     $("main > notes > *").remove();
     notes = JSON.parse(localStorage.getItem('notes'));
     $.each(notes, function(key,value) {
-        $("main > notes").append('<note><div class="header"><p class="title">'+value.title+'</p><div id="indicator" data-job=""></div></div><p class="desc">'+value.content+'</p></note>');
+        $("main > notes").append('<note onclick="openNote(`'+value.title+'`)"><div class="header"><p class="title">'+value.title+'</p><div id="indicator" data-job=""></div></div><p class="desc">'+value.content+'</p></note>');
     });
 };
 
