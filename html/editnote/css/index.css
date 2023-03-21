@@ -4,6 +4,7 @@
 
 * {
     margin: 0;
+    color: var(--font);
 }
 
 img, a, button {
@@ -18,4 +19,9 @@ body {
     --border: #858585;
     --hover: #313131;
     --font: #fff;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
 }

@@ -1,0 +1,79 @@
+header {
+    height: 50px;
+    border-bottom: 1px solid var(--border);
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+header .right {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+header .img-button {
+    height: 40px;
+    aspect-ratio: 1;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .img-button img {
+    height: 35px;
+}
+
+header .img-button:hover {
+    background-color: #8080806c;
+}
+
+
+
+
+toolbar {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    border-bottom: 1px solid var(--border);
+    overflow: auto hidden;
+}
+
+toolbar > toolitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+toolbar > toolitem:hover {
+    background-color: #8080806c;
+}
+
+toolbar > toolitem img,
+toolbar > toolitem svg {
+    height: 25px;
+    width: 25px;
+}
+
+toolbar > toolitem svg.disabled {
+    fill: red !important;
+}
+
+toolbar > hr {
+    border-color: var(--border);
+}
