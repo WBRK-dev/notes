@@ -1,3 +1,21 @@
 @import url('./main.css');
 @import url('./header.css');
 @import url('./popups.css');
+
+* {
+    margin: 0;
+}
+
+img, a, button {
+    display: block;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: sans-serif;
+
+    --bg: #1b1b1b;
+    --border: #858585;
+    --hover: #313131;
+    --font: #fff;
+}
