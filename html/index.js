@@ -134,3 +134,30 @@ if (localStorage.getItem('syncjobs') !== null) {
 } else {
     localStorage.setItem('syncjobs', '[]');
 };
+
+
+// Searchbar
+document.onscroll = function() {
+    if (window.scrollY > 50) {
+        $("main > .searchbarback").css("top","0");
+    } else {
+        $("main > .searchbarback").css("top","-41px");
+    }
+};
+
+function search() {
+    input = $("main > .search input").val();
+    notes = document.querySelectorAll("main > notes > note");
+    if (input !== "") {
+        $("main > notes > note").hide();
+        notes.forEach(note => {
+            noteTitle = note.querySelector("p.title").innerHTML;
+            noteContent = note.querySelector("p.desc").innerHTML;
+            if (noteTitle.toLowerCase().includes(input.toLowerCase()) || noteContent.toLowerCase().includes(input.toLowerCase())) {
+                note.style.display = "flex";
+            }
+        });
+    } else {
+        $("main > notes > note").show();
+    }
+}
