@@ -21,7 +21,19 @@ function addNote(title, content) {
 }
 
 function removeNote(title) {
-    
+    existingNotes = JSON.parse(localStorage.getItem('notes'));
+    newNotes = [];
+    $.each(existingNotes, function(key, value) {
+        if (value.title !== title) {
+            newNotes.push({
+                title: value.title,
+                content: value.content
+            });
+        }
+    });
+    addSyncJob(1, title);
+    localStorage.setItem('notes', JSON.stringify(newNotes));
+    renderNotes();
 }
 
 function openNote(title) {
@@ -32,8 +44,9 @@ function renderNotes() {
     $("main > notes > *").remove();
     notes = JSON.parse(localStorage.getItem('notes'));
     $.each(notes, function(key,value) {
-        $("main > notes").append('<note onclick="openNote(`'+value.title+'`)"><div class="header"><p class="title">'+value.title+'</p><div id="indicator" data-job=""></div></div><p class="desc">'+value.content+'</p></note>');
+        $("main > notes").append('<note onclick="openNote(`'+value.title+'`)"><div class="header"><p class="title">'+value.title+'</p><div id="indicator" data-job="done"></div></div><p class="desc">'+ ((value.content === "") ? "Empty note." : value.content) +'</p></note>');
     });
+    updateNoteIndicator();
 };
 
 function addSyncJob(action, title) {
@@ -51,6 +64,20 @@ function addSyncJob(action, title) {
     });
     localStorage.setItem('syncjobs', JSON.stringify(newJobs));
     syncHandler();
+}
+
+function updateNoteIndicator() {
+    $("main > notes note #indicator").attr("data-job", "done");
+    storedSyncJobs = JSON.parse(localStorage.getItem('syncjobs'));
+    notes = document.querySelectorAll("main > notes note");
+    notes.forEach(note => {
+        noteTitle = note.querySelector("p.title").innerHTML;
+        $.each(storedSyncJobs, function(key,value) {
+            if (value.title === noteTitle) {
+                note.querySelector("#indicator").setAttribute("data-job", "");
+            }
+        });
+    });
 }
 
 async function synchronize() {
@@ -71,7 +98,6 @@ async function synchronize() {
                 });
                 existingNotes = createCloudJson(getRequestJson, existingNotes);
             }
-            console.log(existingNotes);
             $.get('http://wbrk.ddns.net/res/notes/php/saveJson2.php?username=' + userdata.username + '&json=' + JSON.stringify(existingNotes), function () { }).fail(() => {window.open('./userCheck/userCheck.html', '_self');});
         }).fail(() => {window.open('./userCheck/userCheck.html', '_self');});
 
@@ -84,6 +110,7 @@ async function synchronize() {
 
 function syncHandler() {
     storedSyncJobs = JSON.parse(localStorage.getItem('syncjobs'));
+    updateNoteIndicator();
     if (storedSyncJobs.length === 0) {
         $("header #indicator").attr('data-job', 'done');
         $("header #sync").removeClass('sync-button');

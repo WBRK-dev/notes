@@ -48,6 +48,9 @@ popups > popup button:hover {
 popups > popup button.sec {background-color: grey;}
 popups > popup button.sec:hover {background-color: #686868;}
 
+popups > popup button.danger {background-color: red;}
+popups > popup button.danger:hover {background-color: rgb(207, 0, 0);}
+
 popups > popup .buttonbox {
     display: flex;
     gap: 10px;

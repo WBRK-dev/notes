@@ -9,13 +9,13 @@
     <title>Edit Note</title>
 </head>
 <body>
-    <header><p class="title">Edit Note</p><div class="right">
-        <div class="img-button" id="home"><img src="../assets/img/home.svg"></div>
+    <header><div class="img-button" id="home"><img src="../assets/img/arrow-back.svg"></div><p class="title">Edit Note</p><div class="right">
+        
     </div></header>
     <toolbar>
         <toolitem title="Save Note" id="saveNote"><img src="../assets/img/save.svg"></toolitem>
         <toolitem title="Rename Note"><img src="../assets/img/rename.svg"></toolitem>
-        <toolitem title="Delete Note"><img src="../assets/img/delete.svg"></toolitem>
+        <toolitem title="Delete Note" id="deleteNote"><img src="../assets/img/delete.svg"></toolitem>
         <hr>
         <toolitem><img src="../assets/img/bold_format.svg"></toolitem>
         <toolitem><img src="../assets/img/italic_format.svg"></toolitem>
@@ -35,8 +35,14 @@
             <p class="desc">If you exit without saving you lose your changes.</p>
             <div class="buttonbox"><button class="sec" onclick='window.open("../index.html", "_self")'>Discard</button><button class="prim" id="submit">Save</button></div>
         </popup>
+        <popup class="dialog" id="confirmDelete">
+            <p class="title">Delete Note</p>
+            <p class="desc">Delete this note?</p>
+            <div class="buttonbox"><button class="sec" id="hidePopup">Cancel</button><button class="prim danger" id="submit">Delete</button></div>
+        </popup>
     </popups>
 </body>
 <script src="./js/index.js" defer></script>
-<script src="./js/popups.js"></script>
+<script src="./js/popups.js" defer></script>
+<script src="../assets/js/globalNoteFunctions.js" defer></script>
 </html>

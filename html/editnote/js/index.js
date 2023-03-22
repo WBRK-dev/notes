@@ -40,10 +40,12 @@ function saveNote(title) {
 
 
 
-
-// Click events
+// Toolbar events
 
 $("toolbar #saveNote").click(() => {saveNote(title)});
+$("toolbar #deleteNote").click(() => {popups(0,'confirmDelete')});
+
+// Click events
 
 $("header #home").click(() => {
     noteNoteContent = $("textarea").val();
@@ -64,4 +66,9 @@ $("header #home").click(() => {
 $("popups popup#saveChanges #submit").click(function () {
     saveNote(title);
     window.open("../index.html","_self");
+});
+
+$("popups > popup#confirmDelete #submit").click(() => {
+    removeNote(title);
+    window.open("../index.html", "_self");
 });
