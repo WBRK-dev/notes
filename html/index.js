@@ -86,7 +86,6 @@ async function synchronize() {
     if (!(userdata.offline)) {
         $("header #indicator").attr('data-job', 'syncing');
         storedNotes = JSON.parse(localStorage.getItem('notes'));
-        console.log(storedNotes, storedSyncJobs);
         await $.get("http://wbrk.ddns.net/res/notes/php/getJson.php?username="+userdata.username, function (data) {
             let existingNotes = JSON.parse(data);
             for (let i = 0; i < storedSyncJobs.length; i++) {
