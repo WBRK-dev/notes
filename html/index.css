@@ -20,3 +20,19 @@ body {
     --hover: #313131;
     --font: #fff;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1b1b1b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #313131;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #474747;
+}
